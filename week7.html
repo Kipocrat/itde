@@ -16,10 +16,16 @@
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		var camera=new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
 		var scene = new THREE.Scene();
+		
+		var delta=0;
+		
 		function render(){
 			pyramidmesh.rotation.y+=0.1;
 			paramesh.rotation.x+=0.1;
 			paramesh.rotation.y+=0.1;
+			delta+=0.1;
+			planegeometry.vertices[0].z=-25+Math.sin(delta)*50;
+			planegeometry.verticesNeedUpdate=true;
 			renderer.render(scene, camera);
 			requestAnimationFrame(render);
 		}
@@ -60,6 +66,12 @@
 		var paramesh=new THREE.Mesh(parageometry, paramaterial);
 		paramesh.position.set(0, -2, -100);
 		scene.add(paramesh);
+		
+		var planegeometry=new THREE.PlaneGeometry(10, 10);
+		var planematerial=new THREE.MeshBasicMaterial();
+		var planemesh=new THREE.Mesh(planegeometry, planematerial);
+		planemesh.position.set(0, -20, -100);
+		scene.add(planemesh);
 		
 		var lightOne=new THREE.AmbientLight(0xffff, 0.5);
 		scene.add(lightOne);
