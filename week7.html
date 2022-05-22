@@ -25,7 +25,15 @@
 		var pyramidmesh=new THREE.Mesh(pyramidgeometry, pyramidmaterial);
 		pyramidmesh.position.set(0, 2, -10);
 		scene.add(pyramidmesh);
+		
+		var lightOne=new THREE.AmbientLight(0xffff, 0.5);
+		scene.add(lightOne);
+		
+		var lightTwo=new THREE.PointLight(0xffff, 0.5);
+		scene.add(lightTwo);
+		
 		render();
+		
 	</script>
 </body>
 </html>
