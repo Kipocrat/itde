@@ -6,7 +6,7 @@
 </head>
 <script src="three.js-dev/build/three.js"></script>-->
 <script src="https://threejs.org/build/three.js"></script>
-<script src="https://threejs.org/examples/jsm/geometries/ParametricGeometry.js"></script>
+
 <body>
 	<canvas id="Canvas"></canvas>
 	
@@ -55,7 +55,7 @@
 		circlemesh.rotation.set(0, 0.5, 0);
 		scene.add(circlemesh);
 		
-		var paraFunction=function(a, b)
+		/*var paraFunction=function(a, b)
 		{
 			var x=-5+5*a;
 			var y=-5+5*b;
@@ -66,7 +66,7 @@
 		var paramaterial=new THREE.MeshBasicMaterial({color: 0xF3FFE2});
 		var paramesh=new THREE.Mesh(parageometry, paramaterial);
 		paramesh.position.set(0, -2, -100);
-		scene.add(paramesh);
+		scene.add(paramesh);*/
 		
 		var planegeometry=new THREE.PlaneGeometry(10, 10);
 		var planematerial=new THREE.MeshBasicMaterial();
