@@ -17,7 +17,9 @@
 		var camera=new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
 		var scene = new THREE.Scene();
 		function render(){
-			pyramidmesh.rotation.y+=0.01;
+			pyramidmesh.rotation.y+=0.1;
+			paramesh.rotation.x+=0.1;
+			paramesh.rotation.y+=0.1;
 			renderer.render(scene, camera);
 			requestAnimationFrame(render);
 		}
@@ -33,19 +35,31 @@
 		boxmesh.position.set(-0.9, 0, -6);
 		scene.add(boxmesh);
 		
-		var spheregeometry=new THREE.SphereGeometry(1.5);
+		var spheregeometry=new THREE.SphereGeometry(0.5);
 		var spherematerial=new THREE.MeshBasicMaterial({wireframe: true, color: 0x0000000});
 		var spheremesh=new THREE.Mesh(spheregeometry, spherematerial);
 		spheremesh.position.set(0.9, 0, -6);
 		scene.add(spheremesh);
 		
-		var circlegeometry=new THREE.CircleBufferGeometry(1.5);
+		var circlegeometry=new THREE.CircleBufferGeometry(0.5);
 		var circlematerial=new THREE.MeshBasicMaterial({color: 0x0000000});
 		var circlemesh=new THREE.Mesh(circlegeometry, circlematerial);
 		circlemesh.position.set(2, 0, -6);
 		circlemesh.rotation.set(0, 0.5, 0);
 		scene.add(circlemesh);
-
+		
+		var paraFunction=function(a, b)
+		{
+			var x=-5+5*a;
+			var y=-5+5*b;
+			var z=(Math.sin(a*Math.PI)+Math.sin(b*Math.PI))*(-7);
+			return new THREE.Vector3(x, y, z);
+		}
+		var parageometry=new THREE.ParametricGeomety(paraFunction, 8, 8);
+		var paramaterial=new THREE.MeshBasicMaterial({color: 0xF3FFE2});
+		var paramesh=new THREE.Mesh(parageometry, paramaterial);
+		paramesh.position.set(0, -2, -100);
+		scene.add(paramesh);
 		
 		var lightOne=new THREE.AmbientLight(0xffff, 0.5);
 		scene.add(lightOne);
