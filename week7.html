@@ -41,6 +41,12 @@
 		var boxmesh=new THREE.Mesh(boxgeometry, boxmaterial);
 		boxmesh.position.set(-0.9, 0, -6);
 		scene.add(boxmesh);
+		var boxmaterial=new THREE.MeshNormalMaterial({
+			color: 0xFF0000,
+			transparent: true,
+			opacity: 1
+		});
+
 		
 		var spheregeometry=new THREE.SphereGeometry(0.5);
 		var spherematerial=new THREE.MeshBasicMaterial({wireframe: true, color: 0x0000000});
