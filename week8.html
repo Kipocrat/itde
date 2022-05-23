@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head><title>threeJS shaders</title>
+<meta charset="utf-8">
+</head>
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://threejs.org/build/three.js"></script>
+<!-- Вершинний шейдер -->
+<script type="x-shader/x-vertex" id="vertexShader">
+void main()
+{
+ gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+}
+</script>
+	<!-- Фрагментний шейдер -->
+<script type="x-shader/x-fragment" id="fragmentShader">
+uniform float delta;
+void main()
+	{
+  
+	gl_FragColor = vec4(5.0, delta + 0.0, 5.0, 1.0);
+	}
+</script>
+<body>
+<canvas id="Canvas"></canvas>
+
+
+
+<script type="text/javascript">
+		
+	var renderer=new THREE.WebGLRenderer({canvas:document.getElementById('Canvas'), antialias: true});
+	renderer.setClearColor(0xCBEFFF);
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	
+	var camera=new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+	var scene=new THREE.Scene();
+	
+	var lightOne=new THREE.AmbientLight(0xffff, 0.5);
+	scene.add(lightOne);
+	
+	var lightTwo=new THREE.PointLight(0xffff, 0.5);
+	scene.add(lightTwo);
+	
+	// користувацький шейдер
+  /*var customUniforms={
+		delta: {value: 0}
+	};*/
+	var customMat=new THREE.ShaderMaterial({
+		uniforms: {
+
+		time: { value: 1.0 },
+		resolution: { value: new THREE.Vector2() }
+    delta: {value: 0}
+	},
+
+	vertexShader: document.getElementById('vertexShader').textContent,
+
+	fragmentShader: document.getElementById('fragmentShader').textContent
+	} );
+	
+	var boxgeometry=new THREE.BoxBufferGeometry(100, 100, 100, 10, 10, 10);
+	var boxmesh=new THREE.Mesh(boxgeometry, customMat);
+	boxmesh.position.set(-100, 0, -1000);
+	scene.add(boxmesh);
+	
+	var cubegeometry=new THREE.BoxGeometry(100, 100, 100);
+	var cubemesh=new THREE.Mesh(cubegeometry, customMat);
+	cubemesh.position.set(150, 0, -1000);
+	scene.add(cubemesh);
+	
+	/*var layer01 = new THREE.TextureLoader().load('lava.jpg');
+	layer01.wrapS = Layer01.wrapT = TREE.RepeatWrapping;*/
+	
+	
+	requestAnimationFrame(render);
+  var delta=0;
+	function render(){
+    delta+=0.1;
+    boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
+		renderer.render(scene, camera);
+		requestAnimationFrame(render);
+	}
+	
+
+
+	
+</script>
+</body>
+</html>
