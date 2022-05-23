@@ -27,7 +27,7 @@
 	var boxmesh=new THREE.Mesh(boxgeometry, customMat);
 	boxmesh.position.set(-100, 0, -1000);
 	scene.add(boxmesh);
-	var cubegeometry=new THREE.CubeGeometry(100, 100, 100);
+	var cubegeometry=new THREE.BoxGeometry(100, 100, 100);
 	var cubemesh=new THREE.Mesh(cubegeometry, customMat);
 	cubemesh.position.set(150, 0, -1000);
 	scene.add(cubemesh);
