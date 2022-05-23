@@ -17,6 +17,9 @@
 
 	var lightOne= new THREE.AmbientLight(0xfffff, 0.5);
 	scene.add(lightOne);
+	
+	var lightTwo=new THREE.PointLight(0xfffff, 0.5);
+	scene.add(lightTwo);
 
 	var objLoader = new THREE.OBJLoader();
 	objLoader.load("models/steyerdorf.obj", function(mesh){
