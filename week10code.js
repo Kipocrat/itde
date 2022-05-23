@@ -27,7 +27,7 @@ function init() {
 	 light.position.set(-100, 200, 100);
 	 scene.add(light);
 
-	const texture = new THREE.TextureLoader().load( 'coca.jpg' );
+	const texture = new THREE.TextureLoader().load( 'map.jpg' );
 	
 	 var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
 	 var cylmaterial = new THREE.MeshLambertMaterial({ map: texture });
