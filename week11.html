@@ -11,8 +11,9 @@
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 
-	var camera=new THREE.PerspectiveCamera(350, window.innerWidth / window.innerHeight, 0.01, 200000);
-
+	var camera=new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 20000);
+	camera.position.z = 1000;
+	
 	var scene = new THREE.Scene();
 
 	var lightOne= new THREE.AmbientLight(0xfffff, 0.5);
