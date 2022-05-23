@@ -7,6 +7,10 @@
 <!-- Вершинний шейдер -->
 <!-- Фрагментний шейдер -->
 <script>
+	var customMat=new THREE.ShaderMaterial({
+		vertexShader: document.getElementById('vertexShader').textContent,
+		fragmentShader: document.getElementById('fragmentShader').textContent
+	});
 	var renderer=new THREE.WebGLRenderer({canvas:document.getElementById('Canvas'), antialias: true});
 	renderer.setClearColor(0xCBEFFF);
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -30,6 +34,19 @@
 	function render(){
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
+	}
+</script>
+	<!-- Вершинний шейдер -->
+<script type="x-shader/x-vertex" id="vertexShader">
+void main()
+{
+ gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+}
+</script>
+<script type="x-shader/x-fragment" id="fragmentShader">
+void main()
+	{
+	gl_FragColor = vec4(5.0, 0.0, 5.0, 0.0);
 	}
 </script>
 </body>
