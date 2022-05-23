@@ -3,7 +3,7 @@ function init() {
 	 var WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
 
 	 var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('Canvas'), antialias:true});
-	renderer.setClearColor(0x333333);
+	//renderer.setClearColor(0x333333);
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 
