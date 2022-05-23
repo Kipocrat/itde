@@ -27,8 +27,10 @@ function init() {
 	 light.position.set(-100, 200, 100);
 	 scene.add(light);
 
+	const texture = new THREE.TextureLoader().load( 'https://github.com/mrdoob/three.js/blob/dev/examples/textures/disturb.jpg' );
+	
 	 var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
-	 var cylmaterial = new THREE.MeshLambertMaterial();
+	 var cylmaterial = new THREE.MeshLambertMaterial({ map: texture });
 	 var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial);
 
 	 cylmesh.position.set(0.9, -5, -6);
