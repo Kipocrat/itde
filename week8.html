@@ -11,12 +11,10 @@
 <!-- Вершинний шейдер -->
 <!-- Фрагментний шейдер -->
 <script type="text/javascript">
-	const _VS = '
-	void main(){
+	var _VS = ' void main(){
 	gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
 	}';
-	const _FS = '
-	void main()
+	var _FS = 'void main()
 	{
 		gl_FragColor = vec4(5.0, 0.0, 5.0, 0.0);
 	}';
