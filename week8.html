@@ -40,14 +40,14 @@
 	var layer01 = new THREE.TextureLoader().load('lava.jpg');
 	layer01.wrapS = Layer01.wrapT = TREE.RepeatWrapping;
 	
-	var customMat=new THREE.ShaderMaterial({
+	var customMat=new THREE.RawShaderMaterial({
 		uniforms: {
 			colorMap: {
 				value: layer01
 			}
-	vertexShader: document.getElementById( 'vertexShader' ).textContent,
+	vertexShader: vertexShader,
 
-	fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+	fragmentShader: fragmentShader
 	},
 	} );
 	requestAnimationFrame(render);
@@ -56,10 +56,6 @@
 		requestAnimationFrame(render);
 	}
 	
-	
-
-	
-
 
 </script>
 	<!-- Вершинний шейдер -->
