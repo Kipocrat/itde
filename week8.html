@@ -9,15 +9,27 @@
 <canvas id="Canvas"></canvas>
 
 <!-- Вершинний шейдер -->
+<script type="x-shader/x-vertex" id="vertexShader">
+void main()
+{
+ gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+}
+</script>
+<script type="x-shader/x-fragment" id="fragmentShader">
+void main()
+	{
+	gl_FragColor = vec4(5.0, 0.0, 5.0, 0.0);
+	}
+</script>
 <!-- Фрагментний шейдер -->
 <script type="text/javascript">
-	var _VS = ' void main(){
+	/*var _VS = 'void main(){
 	gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
 	}';
 	var _FS = 'void main()
 	{
 		gl_FragColor = vec4(5.0, 0.0, 5.0, 0.0);
-	}';
+	}';*/
 	
 	
 	var renderer=new THREE.WebGLRenderer({canvas:document.getElementById('Canvas'), antialias: true});
@@ -48,13 +60,17 @@
 	var layer01 = new THREE.TextureLoader().load('lava.jpg');
 	layer01.wrapS = Layer01.wrapT = TREE.RepeatWrapping;
 	
-	var customMat=new THREE.RawShaderMaterial({
+	var customMat=new THREE.ShaderMaterial({
 		uniforms: {
-			}
-	vertexShader: _VS,
 
-	fragmentShader: _FS
+		time: { value: 1.0 },
+		resolution: { value: new THREE.Vector2() }
+
 	},
+
+	vertexShader: document.getElementById( 'vertexShader' ).textContent,
+
+	fragmentShader: document.getElementById( 'fragmentShader' ).textContent
 	} );
 	requestAnimationFrame(render);
 	function render(){
@@ -63,19 +79,8 @@
 	}
 	
 
-</script>
-	<!-- Вершинний шейдер 
-<script type="x-shader/x-vertex" id="vertexShader">
-void main()
-{
- gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-}
-</script>
-<script type="x-shader/x-fragment" id="fragmentShader">
-void main()
-	{
-	gl_FragColor = vec4(5.0, 0.0, 5.0, 0.0);
-	}-->
+
+	
 </script>
 </body>
 </html>
