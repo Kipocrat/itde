@@ -20,7 +20,12 @@ function init() {
 	 camera.aspect = WIDTH / HEIGHT;
 	 camera.updateProjectMatrix();
 	 });
-
+	
+	var lightOne= new THREE.AmbientLight(0xfffff, 0.5);
+	scene.add(lightOne);
+	
+	var lightTwo=new THREE.PointLight(0xfffff, 0.5);
+	scene.add(lightTwo);
 
 	 var objLoader = new THREE.OBJLoader();
 	 objLoader.load("Tyrannosaurus.obj", function(mesh){
@@ -36,11 +41,11 @@ function init() {
 
 	});
 
-	requestAnimationFrame(render);
+	/*requestAnimationFrame(render);
 	function render() {
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
-	}
+	}*/
 	 controls = new THREE.OrbitControls(camera,renderer.domElement);
 }
 
