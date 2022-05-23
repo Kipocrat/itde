@@ -27,7 +27,7 @@ function init() {
 	 light.position.set(-100, 200, 100);
 	 scene.add(light);
 
-	const texture = new THREE.TextureLoader().load( 'https://github.com/mrdoob/three.js/blob/eab2a29621b332e0e8a0bac5a0098cfcf1e331e1/examples/textures/lava/lavatile.jpg' );
+	const texture = new THREE.TextureLoader().load( 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/disturb.jpg' );
 	
 	 var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
 	 var cylmaterial = new THREE.MeshLambertMaterial({ map: texture });
