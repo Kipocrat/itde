@@ -110,7 +110,7 @@ void main()
    	delta+=0.1;
 	delta2+=0.1;	
     		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
-		boxmesh.material.uniforms.delta2.value=0.5+Math.cos(delta2);
+		boxmesh.material.uniforms.delta2.value=0.5+Math.sin(delta2);
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
