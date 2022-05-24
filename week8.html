@@ -18,7 +18,7 @@ uniform float delta;
 void main()
 	{
   
-	gl_FragColor = vec4(1.0, delta +0.0, 1.0,  1.0);
+	gl_FragColor = vec4(0.0, delta +1.0, 5.0,  5.0);
 	}
 </script>
 	
@@ -73,12 +73,10 @@ void main()
 	cubemesh.position.set(150, 0, -1000);
 	scene.add(cubemesh);
 	
-	/*var layer01 = new THREE.TextureLoader().load('lava.jpg');
-	layer01.wrapS = Layer01.wrapT = TREE.RepeatWrapping;*/
 	
 	
 	requestAnimationFrame(render);
-  	var delta=4;
+  	var delta=2;
 	function render(){
    	delta+=0.1;
     		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
