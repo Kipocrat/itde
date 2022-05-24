@@ -18,7 +18,24 @@ uniform float delta;
 void main()
 	{
   
-	gl_FragColor = vec4(5.0, delta + 5.0, 0.0, delta +1.0);
+	gl_FragColor = vec4(5.0, delta + 5.0, 0.0, 5.0);
+	}
+</script>
+	
+<!-- Вершинний шейдер2 -->
+<script type="x-shader/x-vertex" id="vertexShader2">
+void main()
+{
+ gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+}
+</script>
+	<!-- Фрагментний шейдер2 -->
+<script type="x-shader/x-fragment" id="fragmentShader2">
+uniform float delta2;
+void main()
+	{
+  
+	gl_FragColor = vec4(3.0, 3.0, 3.0, delta2 +3.0);
 	}
 </script>
 <body>
@@ -64,8 +81,21 @@ void main()
 	boxmesh.position.set(-100, 0, -1000);
 	scene.add(boxmesh);
 	
+	var customMat2=new THREE.ShaderMaterial({
+		uniforms: {
+
+		time: { value: 1.0 },
+		resolution: { value: new THREE.Vector2() },
+    		delta2: {value: 0}
+	},
+
+	vertexShader: document.getElementById('vertexShader2').textContent,
+
+	fragmentShader: document.getElementById('fragmentShader2').textContent
+	} );
+	
 	var cubegeometry=new THREE.BoxGeometry(100, 100, 100);
-	var cubemesh=new THREE.Mesh(cubegeometry, customMat);
+	var cubemesh=new THREE.Mesh(cubegeometry, customMat2);
 	cubemesh.position.set(150, 0, -1000);
 	scene.add(cubemesh);
 	
@@ -75,9 +105,12 @@ void main()
 	
 	requestAnimationFrame(render);
   var delta=0;
+	var delta2=0;
 	function render(){
-    delta+=0.3;
-    boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
+   	delta+=0.2;
+	delta2+=1.0;	
+    		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
+		boxmesh.material.uniforms.delta.value=0.3+Math.cos(delta);
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
