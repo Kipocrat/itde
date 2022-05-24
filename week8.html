@@ -18,7 +18,7 @@ uniform float delta;
 void main()
 	{
   
-	gl_FragColor = vec4(1.0, delta +1.0, 1.0,  5.0);
+	gl_FragColor = vec4(8.0, delta +3.0, 3.0,  5.0);
 	}
 </script>
 	
@@ -78,9 +78,9 @@ void main()
 	
 	
 	requestAnimationFrame(render);
-  	var delta=5;
+  	var delta=3;
 	function render(){
-   	delta+=0.01;
+   	delta+=0.1;
     		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
