@@ -18,7 +18,7 @@ function init() {
 	var WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
 	 renderer.setSize(WIDTH, HEIGHT);
 	 camera.aspect = WIDTH / HEIGHT;
-	// camera.updateProjectMatrix();
+	 camera.updateProjectMatrix();
 	 });
 	
 	var lightOne= new THREE.AmbientLight(0xfffff, 0.5);
@@ -46,12 +46,12 @@ function init() {
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
-	// controls = new THREE.OrbitControls(camera,renderer.domElement);
+	controls = new THREE.OrbitControls(camera,renderer.domElement);
 }
 
-/*function animate()
+function animate()
 {
 	 controls.update();
 	 renderer.render(scene, camera);
 	 requestAnimationFrame(animate);
-}*/
+}
